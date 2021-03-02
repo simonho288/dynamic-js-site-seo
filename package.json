@@ -1,0 +1,27 @@
+{
+  "name": "dynamic-js-site-seo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "parcel watch public/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonho288/dynamic-js-site-seo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonho288/dynamic-js-site-seo/issues"
+  },
+  "homepage": "https://github.com/simonho288/dynamic-js-site-seo#readme",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
+}
