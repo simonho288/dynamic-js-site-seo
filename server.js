@@ -1,4 +1,6 @@
 const express = require('express');
+const puppeteer = require('puppeteer');
+const fs = require('fs');
 
 const app = express();
 const PORT = 3000;
@@ -19,6 +21,18 @@ app.get('/get-database-records', async (req, res) => {
     }
     res.json(results);
   }, 800);
+});
+
+// Call this API to generate the static page.
+app.get('/gen-static-pages', async (req, res) => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto(`${req.protocol}://${req.get('host')}/index.html?crawler=1`, {waitUntil: 'networkidle2'});
+  let html = await page.content(); // Headless Chrome returns the HTML contents
+  fs.writeFileSync('public/index-static.html', html); // Save the contents to file
+  await browser.close();
+
+  res.end('Static files generated');
 });
 
 app.listen(PORT, () => {

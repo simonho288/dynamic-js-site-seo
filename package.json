@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "parcel watch public/index.html"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
     "last 1 Chrome version"
   ],
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "puppeteer": "^8.0.0"
   },
   "devDependencies": {}
 }

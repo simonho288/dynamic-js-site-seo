@@ -2,6 +2,8 @@
 logs
 *.log
 
+*-static.html
+
 # Dependency directories
 node_modules/
 

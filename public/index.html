@@ -5,8 +5,8 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title>Top SEO example webpage</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" />
   <style>
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
     body {
       margin: 20px 20px 20px 20px;
       height: 100%;
@@ -42,81 +42,7 @@
   <!-- End Facebook Pixel Code -->
 </head>
 <body>
-  <script type="module">
-    import {LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
-
-    export class IndexPage extends LitElement {
-      static get styles() {
-        return css`
-          .main {
-            color: #333;
-          }
-          .dataList {
-            height: 500px;
-            border: 1px solid lightgray;
-            overflow: scroll;
-          }
-          .dataList img {
-            width: 300px;
-            height: auto;
-          }
-        `;
-      }
-
-      constructor() {
-        super();
-        this._dbRecords = null;
-      }
-
-      async connectedCallback() {
-        await super.connectedCallback();
-        let res = await fetch('/get-database-records', {
-          method: 'GET',
-        });
-        res = await res.json();
-        this._dbRecords = res;
-        await this.requestUpdate();
-
-        this.createMetaTag([
-          { name: 'description' }, { content: 'This webpage is an example to show how to make a dynamic Javascript webpage at the top of Google Search' },
-        ]);
-      }
-
-      createMetaTag(values) {
-        let meta = document.createElement('meta');
-        for (let i = 0; i < values.length; ++i) {
-          let value = values[i];
-          for (let title in value) {
-            meta.setAttribute(title, value[title]);
-            // document.head.appendChild(meta);
-          }
-        }
-        document.getElementsByTagName('head')[0].appendChild(meta);
-      }  
-
-      render() {
-        return html`
-          <div class="main">
-            <h1>Top SEO Example Webpage</h1>
-            <p>This webpage is an example to show how to make a dynamic Javascript webpage at the top of Google Search</p>
-            <h3>Example Database records from backend.</h3>
-            <div class="dataList">
-              ${this._dbRecords
-                ? html`
-                  <ul>
-                    ${this._dbRecords.map(r => html`<li><img src="${r.img}"><p>${r.name} - ${r.detail}</p></li>`)}
-                  </ul>
-                `
-                : html`<p>Loading data...</p>`
-              }
-            </div>
-          </div>
-        `;
-      }
-    }
-
-    customElements.define('index-page', IndexPage);    
-  </script>
+  <script type="module" src="index.js"></script>
   <index-page></index-page>
 </body>
 </html>
